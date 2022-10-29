@@ -7,6 +7,6 @@ jobs:
       - name: Echo
         run: echo "Hello, world"
       - name: Docker
-        uses: docker://ubuntu:22.04
+        uses: docker://ghcr.io/databloom-ai/tpch-docker:main
         with:
-          args: /bin/bash -c "echo Hello world"
+          args: /bin/bash -c "./qgen -r 1 -v"
