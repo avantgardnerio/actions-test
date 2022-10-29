@@ -4,4 +4,10 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world"
+      - name: Echo
+        run: echo "Hello, world"
+      - name: Docker
+        uses: docker://gcr.io/cloud-builders/gradle
+        with:
+          entrypoint: /bin/bash
+          args: ["-c", "echo Hello world"]
