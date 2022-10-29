@@ -10,4 +10,4 @@ jobs:
         uses: docker://gcr.io/cloud-builders/gradle
         with:
           entrypoint: /bin/bash
-          args: ["-c", "echo Hello world"]
+          args: "echo Hello world"
