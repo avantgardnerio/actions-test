@@ -9,4 +9,4 @@ jobs:
       - name: Docker
         uses: docker://ubuntu:22.04
         with:
-          args: /bin/bas -c "echo Hello world"
+          args: /bin/bash -c "echo Hello world"
