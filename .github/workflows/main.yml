@@ -10,3 +10,25 @@ jobs:
         uses: docker://ghcr.io/databloom-ai/tpch-docker:main
         with:
           args: /bin/bash -c "./qgen -r 1 -v"
+  docker:
+    name: Docker
+    needs: [linux-build-lib, react-build, generate-data]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and push Docker image
+        run: |
+          echo "github user is $DOCKER_USER"
+          pwd
+          ls -l
+          docker login ghcr.io -u $DOCKER_USER -p "$DOCKER_PASS"
+          docker pull alpine:latest
+          docker tag alpine:latest ghcr.io/spaceandtimelabs/ballista-standalone:$GITHUB_SHA
+          docker push ghcr.io/spaceandtimelabs/ballista-standalone:$GITHUB_SHA
+        env:
+          DOCKER_USER: ${{ github.actor }}
+          DOCKER_PASS: ${{ secrets.GITHUB_TOKEN }}
+    
