@@ -12,7 +12,6 @@ jobs:
           args: /bin/bash -c "./qgen -r 1 -v"
   docker:
     name: Docker
-    needs: [linux-build-lib, react-build, generate-data]
     runs-on: ubuntu-latest
     permissions:
       contents: read
