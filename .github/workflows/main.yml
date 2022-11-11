@@ -25,8 +25,8 @@ jobs:
           ls -l
           docker login ghcr.io -u $DOCKER_USER -p "$DOCKER_PASS"
           docker pull alpine:latest
-          docker tag alpine:latest ghcr.io/spaceandtimelabs/ballista-standalone:$GITHUB_SHA
-          docker push ghcr.io/spaceandtimelabs/ballista-standalone:$GITHUB_SHA
+          docker tag alpine:latest ghcr.io/avantgardnerio/ballista-standalone:$GITHUB_SHA
+          docker push ghcr.io/avantgardnerio/ballista-standalone:$GITHUB_SHA
         env:
           DOCKER_USER: ${{ github.actor }}
           DOCKER_PASS: ${{ secrets.GITHUB_TOKEN }}
